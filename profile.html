@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edrich Lab 9 - Saved Profile</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <main class="col-sm-6 mx-auto mt-3 border">
+        <h1 class="text-center">Saved Profile Information</h1>
+        <hr>
+        <script>
+            const strings = sessionStorage.lab9info.split('|');
+            // remove lat item to prevent undefined empty field
+            strings.pop();
+            // write data list element
+            document.write('<dl>');
+            // loop through array
+            for (let i in strings) {
+                // split values on equal signs
+                let elements = strings[i].split('=');
+                // replace hyphens with spaces for field names of associative array
+                let field = elements[0].replaceAll('-',' ');
+                let value = elements[1];
+                // capitalize field names and add colons to data terms
+                document.write(`<dt style="text-transform: capitalize">${field}:</dt>`);
+                document.write(`<dd>${value}</dd>`)
+            }
+            document.write(`</dl>`)
+        </script>
+    </main>
+</body>
+</html>
